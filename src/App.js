@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import Contacts from './components/contacts/Contacts';
+import FormComponent from './components/form/FormComponent';
+import { addInfo } from './utils/Functions';
+
+const initialValues={username:"",phoneNumber:"",gender:"NO INFO"}
 
 function App() {
+  const [info,setInfo]=useState(initialValues)
+
+  const handleFormSubmit=(e)=>{
+    e.preventDefault();
+    console.log(info)
+    addInfo(info)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <FormComponent info={info} setInfo={setInfo} handleFormSubmit={handleFormSubmit}/>
+    <Contacts/>
     </div>
   );
 }
