@@ -62,7 +62,7 @@ const Contacts = () => {
             </TableRow>
           ))
 
-         ) }               
+         ) }            
           
           
 
