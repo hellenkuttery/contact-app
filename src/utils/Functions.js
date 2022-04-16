@@ -1,5 +1,5 @@
 import firebase from "./firebase";
-import { getDatabase, set, ref, push,onValue } from "firebase/database";
+import { getDatabase, set, ref, push,onValue, remove } from "firebase/database";
 import { useEffect,useState } from "react";
 // Bilgiler eklenecek, silinecek düzelme işlemi yapılacak
 
@@ -38,3 +38,9 @@ export const useFetch = () => {
   return {isLoading,contactList}
 
 };
+
+export const DeleteInfo=(id)=>{
+    const db = getDatabase();
+    const userRef = ref(db, "baglanti");
+    remove(ref(db,"baglanti/"+id))
+}
